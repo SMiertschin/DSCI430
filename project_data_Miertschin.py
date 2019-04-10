@@ -25,7 +25,7 @@ lake_table = (lakes >>
     group_by(X.DNR_ID_Site_Number,X.LAKE_NAME) >>
     summarize(count = n(X.DNR_ID_Site_Number)))
 
-ll_df = pd.read_csv("./common_latlongs.csv",names=["Lat","Long"])
+ll_df = pd.read_csv("./common_latlongs.csv",names=["Lat","Long"],dtype = {'Lat': str,'Long': str})
 intersect_lat_long = set(zip(ll_df.Lat,ll_df.Long))
 
 ll_code_dict = {key:val for key,val in zip(intersect_lat_long,ref.Monit_MAP_CODE1)}
